@@ -1,4 +1,20 @@
 package com.example.apk_katalogproduk.viewholder
 
-class ProductViewHolder {
+import android.view.View
+import android.widget.ImageView
+import android.widget.RatingBar
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.example.apk_katalogproduk.R
+
+class ProductViewHolder(itemView: View)
+    : RecyclerView.ViewHolder(itemView) {
+
+    val imgPet: ImageView = itemView.findViewById(R.id.imgPet)
+    val txtId: TextView = itemView.findViewById(R.id.txtId)
+    val txtName: TextView = itemView.findViewById(R.id.txtName)
+    val txtType: TextView = itemView.findViewById(R.id.txtType)
+    val txtDesc: TextView = itemView.findViewById(R.id.txtDesc)
+    val txtPrice: TextView = itemView.findViewById(R.id.txtPrice)
+    val ratingPet: RatingBar = itemView.findViewById(R.id.ratingPet)
 }
