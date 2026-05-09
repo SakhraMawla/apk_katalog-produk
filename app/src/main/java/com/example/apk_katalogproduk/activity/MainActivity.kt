@@ -18,42 +18,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         recyclerView = findViewById(R.id.recyclerView)
+        // Set tampilan 2 kolom menyamping
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
 
-        val listProduct: List<Product> = listOf(
+        val listProduct = listOf(
+            // --- KELOMPOK KUCING ---
+            Product(1, "Milo", "Kucing Persia", 450000.0, 4.5f, R.drawable.kucing_persia, "Kucing lucu dan aktif"),
+            Product(2, "Oyen", "Kucing Anggora", 450000.0, 4.0f, R.drawable.kucing_anggora, "Kucing penurut dan suka bermain"),
+            Product(3, "Luna", "Kucing Siam", 550000.0, 4.7f, R.drawable.kucing_siam, "Kucing anggun dengan corak warna unik"),
+            Product(4, "Kiko", "Kucing Scottish Fold", 900000.0, 4.8f, R.drawable.kucing_scottish_fold, "Kucing dengan telinga lipat yang unik"),
+            Product(5, "Bella", "Kucing Maine Coon", 1500000.0, 5.0f, R.drawable.kucing_maine_coon, "Kucing ras terbesar yang sangat lembut"),
 
-            Product(
-                1,
-                "Milo",
-                "Kucing Persia",
-                450000.00,
-                4.5f,
-                R.drawable.ic_launcher_foreground,
-                "Kucing lucu dan aktif"
-            ),
-
-            Product(
-                2,
-                "Oyen",
-                "Kucing Anggora",
-                450000.00,
-                4.0f,
-                R.drawable.ic_launcher_foreground,
-                "Kucing lucu dan aktif"
-            ),
-
-            Product(
-                3,
-                "Bobi",
-                "Anjing Husky",
-                450000.00,
-                5.0f,
-                R.drawable.ic_launcher_foreground,
-                "Anjing lucu dan aktif"
-            )
+            // --- KELOMPOK ANJING ---
+            Product(6, "Bobi", "Anjing Husky", 750000.0, 5.0f, R.drawable.anjing_husky, "Anjing gagah dan sangat setia"),
+            Product(7, "Rex", "Anjing Golden", 850000.0, 4.9f, R.drawable.anjing_golden, "Anjing sangat ramah dan setia"),
+            Product(8, "Bruno", "Anjing Bulldog", 1200000.0, 4.5f, R.drawable.anjing_bulldog, "Anjing yang tenang dan sangat tangguh"),
+            Product(9, "Molly", "Anjing Poodle", 650000.0, 4.6f, R.drawable.anjing_poodle, "Anjing pintar dengan bulu yang cantik"),
+            Product(10, "Zorro", "Anjing Beagle", 700000.0, 4.4f, R.drawable.anjing_beagle, "Anjing pelacak yang lincah dan berani")
         )
 
         adapter = ProductAdapter(listProduct)
         recyclerView.adapter = adapter
     }
 }
-
