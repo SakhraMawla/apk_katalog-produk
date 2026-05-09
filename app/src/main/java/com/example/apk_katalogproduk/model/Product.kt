@@ -1,7 +1,6 @@
 package com.example.apk_katalogproduk.model
 
-class Product {
-    data class Pet(
+data class Product (
         val id: Int,
         val name: String,
         val type: String,
@@ -9,5 +8,4 @@ class Product {
         val rating: Float,
         val imageResId: Int,
         val description: String
-    )
-}
+)

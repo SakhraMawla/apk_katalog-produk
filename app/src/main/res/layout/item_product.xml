@@ -1,76 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="4dp"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="3dp"
     app:cardBackgroundColor="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:padding="8dp">
 
         <ImageView
             android:id="@+id/imgPet"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="110dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background"/>
+            tools:src="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/txtId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ID : 01"
-            android:textStyle="bold"
+            android:textSize="10sp"
             android:textColor="#AAAAAA"
-            android:textSize="12sp"
-            android:layout_marginTop="8dp"/>
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"
+            tools:text="ID : 01" />
 
         <TextView
             android:id="@+id/txtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Milo"
+            android:textSize="15sp"
             android:textStyle="bold"
-            android:textSize="18sp"
             android:textColor="#4E4E4E"
-            android:layout_marginTop="6dp"/>
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="Milo" />
 
         <TextView
             android:id="@+id/txtType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kucing Persia"
-            android:textColor="#FFB86B"
+            android:textSize="11sp"
             android:textStyle="bold"
-            android:textSize="13sp"
-            android:layout_marginTop="4dp"/>
+            android:textColor="#FFB86B"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="Kucing Persia" />
 
         <TextView
             android:id="@+id/txtDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kucing lucu dan aktif"
-            android:textSize="12sp"
+            android:textSize="10sp"
             android:textColor="#777777"
             android:maxLines="2"
-            android:layout_marginTop="6dp"/>
+            android:ellipsize="end"
+            android:layout_marginTop="3dp"
+            tools:text="Kucing lucu dan aktif" />
 
         <TextView
             android:id="@+id/txtPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rp 450.000"
+            android:textSize="13sp"
             android:textStyle="bold"
-            android:textSize="16sp"
             android:textColor="#4E4E4E"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="5dp"
+            tools:text="Rp 450.000" />
 
         <RatingBar
             android:id="@+id/ratingPet"
@@ -78,20 +81,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
-            android:rating="4.5"
             android:stepSize="0.5"
             android:isIndicator="true"
-            android:layout_marginTop="6dp"/>
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp"
+            tools:rating="4.5" />
 
         <Button
             android:id="@+id/btnAdopt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:text="Adopt"
+            android:textSize="12sp"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:backgroundTint="#C8A2FF"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="6dp" />
 
     </LinearLayout>
 
