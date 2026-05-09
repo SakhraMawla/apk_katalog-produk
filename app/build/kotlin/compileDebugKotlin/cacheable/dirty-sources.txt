@@ -1,0 +1,12 @@
+C:\Users\LENOVO\StudioProjects\apk_katalog-produk\app\src\main\java\com\example\apk_katalogproduk\adapter\ProdukAdapter.kt
+C:\Users\LENOVO\StudioProjects\apk_katalog-produk\app\src\main\java\com\example\apk_katalogproduk\DetailActivity.kt
+C:\Users\LENOVO\StudioProjects\apk_katalog-produk\app\src\main\java\com\example\apk_katalogproduk\Product.kt
+C:\Users\LENOVO\StudioProjects\apk_katalog-produk\app\src\main\java\com\example\apk_katalogproduk\ui\theme\Color.kt
+C:\Users\LENOVO\StudioProjects\apk_katalog-produk\app\src\main\java\com\example\apk_katalogproduk\CheckoutActivity.kt
+C:\Users\LENOVO\StudioProjects\apk_katalog-produk\app\src\main\java\com\example\apk_katalogproduk\viewholder\ProductViewHolder.kt
+C:\Users\LENOVO\StudioProjects\apk_katalog-produk\app\src\main\java\com\example\apk_katalogproduk\model\Product.kt
+C:\Users\LENOVO\StudioProjects\apk_katalog-produk\app\src\main\java\com\example\apk_katalogproduk\ProductAdapter.kt
+C:\Users\LENOVO\StudioProjects\apk_katalog-produk\app\src\main\java\com\example\apk_katalogproduk\activity\MainActivity.kt
+C:\Users\LENOVO\StudioProjects\apk_katalog-produk\app\src\main\java\com\example\apk_katalogproduk\ui\theme\Type.kt
+C:\Users\LENOVO\StudioProjects\apk_katalog-produk\app\src\main\java\com\example\apk_katalogproduk\ui\theme\Theme.kt
+C:\Users\LENOVO\StudioProjects\apk_katalog-produk\app\src\main\java\com\example\apk_katalogproduk\MainActivity.kt

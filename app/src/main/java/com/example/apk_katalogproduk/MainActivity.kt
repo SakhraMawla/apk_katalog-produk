@@ -1,47 +1,53 @@
 package com.example.apk_katalogproduk
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.apk_katalogproduk.ui.theme.APK_KatalogProdukTheme
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var productAdapter: ProductAdapter
+    private lateinit var productList: ArrayList<Product>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            APK_KatalogProdukTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+        setContentView(R.layout.activity_main)
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    APK_KatalogProdukTheme {
-        Greeting("Android")
+        recyclerView = findViewById(R.id.recyclerView)
+
+        productList = ArrayList()
+
+        productList.add(
+            Product(
+                1,
+                "Milo",
+                "Kucing Persia",
+                "Rp 450.000",
+                4.5f,
+                R.drawable.ic_launcher_background,
+                "Kucing lucu dan aktif"
+            )
+        )
+
+        productList.add(
+            Product(
+                2,
+                "Buddy",
+                "Anjing Golden",
+                "Rp 850.000",
+                5.0f,
+                R.drawable.ic_launcher_background,
+                "Anjing ramah dan pintar"
+            )
+        )
+
+        productAdapter = ProductAdapter(productList)
+
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
+
+        recyclerView.adapter = productAdapter
     }
 }
