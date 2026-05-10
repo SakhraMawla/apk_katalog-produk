@@ -1,15 +1,18 @@
 package com.example.apk_katalogproduk.adapter
-import android.content.Intent
 import android.view.LayoutInflater
-import com.example.apk_katalogproduk.activity.DetailActivity
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.apk_katalogproduk.model.Product
 import com.example.apk_katalogproduk.viewholder.ProductViewHolder
 import com.example.apk_katalogproduk.R
+import android.content.Intent
+import android.widget.Toast
+import kotlin.jvm.java
+import com.example.apk_katalogproduk.activity.DetailProductActivity
+import com.example.apk_katalogproduk.activity.CheckoutActivity
 
 class ProductAdapter (
-    private val listProduct: List<Product>
+    private val listProduct: MutableList<Product>
 )
     : RecyclerView.Adapter<ProductViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -26,24 +29,46 @@ class ProductAdapter (
         holder.txtName.text = product.name
         holder.txtType.text = product.type
         holder.txtDesc.text = product.description
-        holder.txtPrice.text = "Rp ${product.price}" // Tambahkan Rp biar lebih rapi
+        holder.txtPrice.text = product.price.toString()
         holder.ratingPet.rating = product.rating
+
         holder.imgPet.setImageResource(product.imageResId)
 
-        // --- TAMBAHKAN KODE DI BAWAH INI UNTUK PINDAH HALAMAN ---
         holder.itemView.setOnClickListener {
-            val context = holder.itemView.context
-            val intent = Intent(context, DetailActivity::class.java)
-
-            // Mengirim data produk agar bisa ditampilkan di halaman detail
+            val intent = Intent(
+                holder.itemView.context,
+                DetailProductActivity::class.java
+            )
             intent.putExtra("PRODUCT_NAME", product.name)
             intent.putExtra("PRODUCT_TYPE", product.type)
-            intent.putExtra("PRODUCT_DESC", product.description)
             intent.putExtra("PRODUCT_PRICE", product.price)
-            intent.putExtra("PRODUCT_RATING", product.rating)
+            intent.putExtra("PRODUCT_DESC", product.description)
             intent.putExtra("PRODUCT_IMAGE", product.imageResId)
 
-            context.startActivity(intent)
+            holder.itemView.context.startActivity(intent)
+        }
+
+        holder.btnAdopt.setOnClickListener {
+            val intent = Intent(
+                holder.itemView.context,
+                CheckoutActivity::class.java
+            )
+            intent.putExtra("PRODUCT_PRICE", product.price)
+            holder.itemView.context.startActivity(intent)
+        }
+
+        holder.itemView.setOnLongClickListener {
+            listProduct.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, listProduct.size)
+
+            Toast.makeText(
+                holder.itemView.context,
+                "Hewan berhasil dihapus",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            true
         }
     }
 

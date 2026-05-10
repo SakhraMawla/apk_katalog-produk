@@ -1,12 +1,15 @@
 package com.example.apk_katalogproduk.activity
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.apk_katalogproduk.R
 import com.example.apk_katalogproduk.adapter.ProductAdapter
 import com.example.apk_katalogproduk.model.Product
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,8 +23,8 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         // Set tampilan 2 kolom menyamping
         recyclerView.layoutManager = GridLayoutManager(this, 2)
-
-        val listProduct = listOf(
+        val btnTambah: FloatingActionButton = findViewById(R.id.fabCart)
+        val listProduct = mutableListOf(
             // --- KELOMPOK KUCING ---
             Product(1, "Milo", "Kucing Persia", 450000.0, 4.5f, R.drawable.kucing_persia, "Kucing lucu dan aktif"),
             Product(2, "Oyen", "Kucing Anggora", 450000.0, 4.0f, R.drawable.kucing_anggora, "Kucing penurut dan suka bermain"),
@@ -38,6 +41,30 @@ class MainActivity : AppCompatActivity() {
         )
 
         adapter = ProductAdapter(listProduct)
+        recyclerView.itemAnimator = DefaultItemAnimator()
         recyclerView.adapter = adapter
+
+        btnTambah.setOnClickListener {
+
+            val newProduct = Product(
+                listProduct.size + 1,
+                "Produk Baru",
+                "Kucing Baru",
+                300000.0,
+                4.0f,
+                R.drawable.ic_launcher_foreground,
+                "Produk tambahan otomatis"
+            )
+
+            listProduct.add(newProduct)
+            adapter.notifyItemInserted(listProduct.size - 1)
+            recyclerView.smoothScrollToPosition(listProduct.size - 1)
+
+            Toast.makeText(
+                this,
+                "Hewan berhasil ditambahkan",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 }
