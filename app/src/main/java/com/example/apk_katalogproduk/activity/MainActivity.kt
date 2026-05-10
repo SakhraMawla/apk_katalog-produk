@@ -46,19 +46,24 @@ class MainActivity : AppCompatActivity() {
 
         btnTambah.setOnClickListener {
 
-            val newProduct = Product(
-                listProduct.size + 1,
-                "Produk Baru",
-                "Kucing Baru",
-                300000.0,
-                4.0f,
-                R.drawable.ic_launcher_foreground,
-                "Produk tambahan otomatis"
+            val newList = listProduct.toMutableList()
+
+            newList.add(
+                Product(
+                    newList.size + 1,
+                    "Produk Baru",
+                    "Kucing Baru",
+                    300000.0,
+                    4.0f,
+                    R.drawable.ic_launcher_foreground,
+                    "Produk tambahan otomatis"
+                )
             )
 
-            listProduct.add(newProduct)
-            adapter.notifyItemInserted(listProduct.size - 1)
-            recyclerView.smoothScrollToPosition(listProduct.size - 1)
+            adapter.submitList(newList)
+
+            listProduct.clear()
+            listProduct.addAll(newList)
 
             Toast.makeText(
                 this,

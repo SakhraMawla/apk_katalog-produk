@@ -7,9 +7,11 @@ import com.example.apk_katalogproduk.viewholder.ProductViewHolder
 import com.example.apk_katalogproduk.R
 import android.content.Intent
 import android.widget.Toast
+import androidx.recyclerview.widget.DiffUtil
 import kotlin.jvm.java
 import com.example.apk_katalogproduk.activity.DetailProductActivity
 import com.example.apk_katalogproduk.activity.CheckoutActivity
+import com.example.apk_katalogproduk.activity.ProductDiffUtil
 
 class ProductAdapter (
     private val listProduct: MutableList<Product>
@@ -20,6 +22,17 @@ class ProductAdapter (
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_product, parent, false)
         )
+    }
+    fun submitList(newList: MutableList<Product>) {
+
+        val diffUtil = ProductDiffUtil(listProduct, newList)
+
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
+
+        listProduct.clear()
+        listProduct.addAll(newList)
+
+        diffResult.dispatchUpdatesTo(this)
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
@@ -58,16 +71,17 @@ class ProductAdapter (
         }
 
         holder.itemView.setOnLongClickListener {
-            listProduct.removeAt(position)
-            notifyItemRemoved(position)
-            notifyItemRangeChanged(position, listProduct.size)
 
+            val newList = listProduct.toMutableList()
+
+            newList.removeAt(position)
+
+            submitList(newList)
             Toast.makeText(
                 holder.itemView.context,
                 "Hewan berhasil dihapus",
                 Toast.LENGTH_SHORT
             ).show()
-
             true
         }
     }
@@ -75,4 +89,5 @@ class ProductAdapter (
     override fun getItemCount(): Int {
         return listProduct.size
     }
+
 }
